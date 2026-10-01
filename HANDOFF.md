@@ -21,6 +21,7 @@
 - **E2e : 15/15** (`node scripts/e2e.mjs`) : ingestion réelle de 8 RAW dans Chrome headless, culling clavier, loupe peinte, exports, persistance après rechargement, page SEO + démo.
 - SEO : 12 pages (4 thématiques + 8 « X-viewer » par format), FAQ JSON-LD partout, SoftwareApplication sur la home, sitemap (14 URLs), robots, llms.txt avec « What it does NOT do », OG image, manifest. Outil embarqué sur chaque page SEO.
 - Démo intégrée : 9 JPEG CC0 (previews extraits des samples) dans public/demo/.
+- Audit sécurité/privacy (01/10/2026) : CSP stricte (testée en prod via scripts/prod-check.mjs : workers, blobs et hydratation passent), Permissions-Policy, X-Frame-Options DENY, page /legal/ (LCEN : éditeur Damien Yvert, contact damienyvert.dev@gmail.com, hébergeur Vercel), note RGPD/ePrivacy sur /privacy/ (zéro cookie, pas de bannière nécessaire), .well-known/security.txt (expire 10/2027), Content-Type PNG forcé sur /opengraph-image.
 - UI « chambre noire » : ambre safelight sur noir chaud, Fraunces (display) + Instrument Sans + Spline Sans Mono, strip planche-contact animée. Aucun em-dash nulle part.
 
 ## 4. Ce qui reste à faire
