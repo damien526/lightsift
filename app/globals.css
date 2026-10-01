@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Darkroom palette: warm near-black, paper whites, safelight amber. */
+  --color-ink: #0c0b09;
+  --color-well: #080807;
+  --color-panel: #151310;
+  --color-card: #1b1915;
+  --color-line: #2a2722;
+  --color-paper: #ece7dd;
+  --color-dim: #9b948a;
+  --color-faint: #6b655c;
+  --color-amber: #f2a33c;
+  --color-amber-bright: #ffbb56;
+  --color-pick: #7cc576;
+  --color-reject: #e4573f;
+
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-instrument), system-ui, sans-serif;
+  --font-mono: var(--font-spline-mono), ui-monospace, monospace;
+}
+
+html {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-amber) 35%, transparent);
+}
+
+/* Thin warm scrollbars in the workspace. */
+.sift-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
+}
+.sift-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+.sift-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 5px;
+}
+
+@keyframes sift-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: sift-fade-up 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes sift-thumb-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.thumb-in {
+  animation: sift-thumb-in 0.35s ease-out both;
+}
+
+/* The landing's contact-sheet strip scrolls forever. */
+@keyframes sift-strip {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.strip-scroll {
+  animation: sift-strip 48s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strip-scroll {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
