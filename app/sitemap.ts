@@ -14,5 +14,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     })),
     { url: `${SITE_URL}/privacy/`, lastModified: now, priority: 0.2 },
+    { url: `${SITE_URL}/legal/`, lastModified: now, priority: 0.2 },
   ];
 }

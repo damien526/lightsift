@@ -152,7 +152,7 @@ try {
 
   // 8. Site plumbing
   const sitemap = await (await fetch('http://localhost:4871/sitemap.xml')).text();
-  check('sitemap lists 14 urls', (sitemap.match(/<loc>/g) ?? []).length === 14);
+  check('sitemap lists 15 urls', (sitemap.match(/<loc>/g) ?? []).length === 15);
   const robots = await (await fetch('http://localhost:4871/robots.txt')).text();
   check('robots has sitemap', robots.includes('sitemap.xml'));
   const llms = await (await fetch('http://localhost:4871/llms.txt')).text();

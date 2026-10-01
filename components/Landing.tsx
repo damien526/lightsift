@@ -379,6 +379,8 @@ export function Landing({
             <a href="/arw-viewer/" className="transition-colors hover:text-paper">ARW viewer</a>
             <a href="/privacy/" className="transition-colors hover:text-paper">Privacy</a>
             <a href="/cr3-viewer/" className="transition-colors hover:text-paper">CR3 viewer</a>
+            <a href="/legal/" className="transition-colors hover:text-paper">Legal notice</a>
+            <a href="/raw-viewer-online/" className="transition-colors hover:text-paper">RAW viewer online</a>
           </nav>
         </div>
         <div className="border-t border-line/60">

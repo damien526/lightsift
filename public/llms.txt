@@ -40,3 +40,4 @@ URL: https://lightsift.vercel.app
 - https://lightsift.vercel.app/raw-viewer-online/
 - https://lightsift.vercel.app/cr2-viewer/ (and cr3, nef, arw, raf, dng, orf, rw2)
 - https://lightsift.vercel.app/privacy/
+- https://lightsift.vercel.app/legal/

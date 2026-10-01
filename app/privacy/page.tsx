@@ -44,7 +44,31 @@ export default function PrivacyPage() {
             modifies or deletes your original image files.
           </p>
           <p>
-            Questions: open an issue on the project&apos;s GitHub repository.
+            <strong className="text-paper">Cookies and consent (GDPR / ePrivacy):</strong> the site
+            sets no advertising or tracking cookies and uses no fingerprinting, which is why there
+            is no cookie banner. The only data stored on your device (your ratings and flags, in
+            IndexedDB) exists purely to provide the feature you asked for and never leaves your
+            browser. Vercel Analytics is cookieless and aggregates page views without building
+            individual profiles.
+          </p>
+          <p>
+            <strong className="text-paper">Data controller and contact:</strong> Damien Yvert. For
+            any privacy question or request, write to{' '}
+            <a
+              href="mailto:damienyvert.dev@gmail.com"
+              className="underline decoration-line underline-offset-2 hover:text-paper"
+            >
+              damienyvert.dev@gmail.com
+            </a>
+            . Since no personal data reaches the publisher, most GDPR requests resolve to actions on
+            your own device (clearing site data removes everything).
+          </p>
+          <p className="text-sm text-faint">
+            See also the{' '}
+            <Link href="/legal/" className="underline decoration-line underline-offset-2 hover:text-paper">
+              legal notice
+            </Link>{' '}
+            (publisher and hosting information).
           </p>
         </div>
       </div>

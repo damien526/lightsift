@@ -115,6 +115,10 @@ export default async function SeoPage({ params }: Props) {
             <Link href="/privacy/" className="underline decoration-line underline-offset-2">
               Privacy
             </Link>
+            {' · '}
+            <Link href="/legal/" className="underline decoration-line underline-offset-2">
+              Legal notice
+            </Link>
           </p>
         </footer>
       </div>
