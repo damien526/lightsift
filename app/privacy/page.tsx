@@ -1,17 +1,53 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { SITE_URL } from '@/lib/site';
+import { contentPageGraph, jsonLdGraph } from '@/lib/jsonld';
+import { SITE_NAME, canonicalUrl, ogImageUrl } from '@/lib/site';
+
+const DESCRIPTION =
+  'OnlineCull processes your photos entirely in your browser. Nothing is uploaded. Here is exactly what the site does and does not collect.';
 
 export const metadata: Metadata = {
   title: 'Privacy',
-  description:
-    'OnlineCull processes your photos entirely in your browser. Nothing is uploaded. Here is exactly what the site does and does not collect.',
-  alternates: { canonical: `${SITE_URL}/privacy/` },
+  description: DESCRIPTION,
+  alternates: { canonical: canonicalUrl('/privacy') },
+  // Declared so the `app/opengraph-image.tsx` file convention cannot override
+  // the layout's `images` with the robots-blocked `/opengraph-image` URL.
+  // `scripts/og-png.mjs` fails the build if it ever does.
+  openGraph: {
+    type: 'website',
+    url: canonicalUrl('/privacy'),
+    siteName: SITE_NAME,
+    locale: 'en_US',
+    title: 'Privacy · OnlineCull',
+    description: DESCRIPTION,
+    images: [
+      { url: ogImageUrl(), width: 1200, height: 630, alt: SITE_NAME, type: 'image/png' },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy · OnlineCull',
+    description: DESCRIPTION,
+    images: [ogImageUrl()],
+  },
 };
 
 export default function PrivacyPage() {
   return (
     <main className="min-h-dvh bg-ink text-paper">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLdGraph(
+            contentPageGraph({
+              url: canonicalUrl('/privacy'),
+              name: 'Privacy',
+              description: DESCRIPTION,
+              crumb: 'Privacy',
+            }),
+          ),
+        }}
+      />
       <div className="mx-auto max-w-2xl px-5 py-10">
         <nav className="mb-12">
           <Link href="/" className="flex items-center gap-2.5">

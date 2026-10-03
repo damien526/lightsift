@@ -12,6 +12,25 @@ interface FormatSpec {
   ext: string;
   slug: string;
   brand: string;
+  /**
+   * Short brand for the `<title>`, when `brand` is too long to fit.
+   *
+   * Google truncates the title around 60 characters, and it is always the end
+   * that goes. Two brands blew that budget: "Adobe, phones and drones" put the
+   * DNG title at 74 characters and "OM System / Olympus" put ORF at 69, so
+   * both lost the "Free, No Upload" that does the persuading. `brand` stays
+   * long where the copy has room for it; this one is what the title uses.
+   */
+  titleBrand?: string;
+  /**
+   * What follows "View X files " in the meta description.
+   *
+   * Defaults to `from <brand> cameras`, which is true for seven of the eight
+   * formats and false for DNG: Adobe does not make cameras. Shortening `brand`
+   * for the title is not enough on its own — it has to not turn the
+   * description into a false statement.
+   */
+  descPhrase?: string;
   cameras: string;
   story: string[];
   extraFaq?: { q: string; a: string }[];
@@ -78,6 +97,8 @@ const FORMAT_SPECS: FormatSpec[] = [
     ext: 'DNG',
     slug: 'dng-viewer',
     brand: 'Adobe, phones and drones',
+    titleBrand: 'Adobe',
+    descPhrase: 'written by Adobe software, phones and drones',
     cameras: 'iPhone ProRAW, DJI drones, Ricoh GR, Leica and Pentax, plus anything converted by Adobe DNG Converter',
     story: [
       'DNG is the open RAW format: Leica, Ricoh and Pentax write it natively, iPhone ProRAW and DJI drones produce it, and Adobe\'s converter turns any other RAW into it.',
@@ -88,6 +109,8 @@ const FORMAT_SPECS: FormatSpec[] = [
     ext: 'ORF',
     slug: 'orf-viewer',
     brand: 'OM System / Olympus',
+    titleBrand: 'Olympus',
+    descPhrase: 'from OM System and Olympus cameras',
     cameras: 'OM-1, OM-5 and the Olympus OM-D and PEN lines',
     story: [
       'ORF is the RAW format of Olympus and now OM System cameras. It is TIFF-based but hides its previews in maker-specific corners, which is why generic viewers often fail on it.',
@@ -109,8 +132,8 @@ const FORMAT_SPECS: FormatSpec[] = [
 function formatPage(spec: FormatSpec): LandingPage {
   return {
     slug: spec.slug,
-    title: `${spec.ext} Viewer Online: Open ${spec.brand} RAW Files Free, No Upload`,
-    metaDescription: `Open and view ${spec.ext} files from ${spec.brand} cameras in your browser. Free ${spec.ext} viewer with EXIF, star ratings and XMP export. Files never leave your device.`,
+    title: `${spec.ext} Viewer Online: Open ${spec.titleBrand ?? spec.brand} RAW Files Free`,
+    metaDescription: `View ${spec.ext} files ${spec.descPhrase ?? `from ${spec.brand} cameras`} in your browser, with EXIF, star ratings and XMP export. Nothing is uploaded.`,
     h1: `Open ${spec.ext} files in your browser`,
     intro: spec.story,
     steps: [
@@ -154,7 +177,7 @@ const TOPIC_PAGES: LandingPage[] = [
     slug: 'photo-culling-online',
     title: 'Photo Culling Online: Free, Unlimited, No Upload',
     metaDescription:
-      'Cull photos online without uploading them. OnlineCull rates thousands of RAW files in your browser with keyboard shortcuts and exports XMP picks to Lightroom. Free, no account.',
+      'Cull thousands of RAW photos in your browser, keyboard-first, with XMP picks Lightroom reads. Nothing is uploaded. Free, no account.',
     h1: 'Cull photos online, without the upload',
     intro: [
       '"Online" photo culling usually means waiting for gigabytes to upload before you can rate a single frame. OnlineCull flips that: it is a web page, but your photos never leave your computer. The browser reads the files in place and shows the embedded previews, so a 3,000-photo wedding is browsable in about the time it takes to pour a coffee.',
@@ -201,7 +224,7 @@ const TOPIC_PAGES: LandingPage[] = [
     slug: 'photo-mechanic-alternative',
     title: 'Free Photo Mechanic Alternative in the Browser (2026)',
     metaDescription:
-      'Looking for a free Photo Mechanic alternative? OnlineCull uses the same embedded-preview trick for instant RAW browsing, runs in your browser with no install, and exports XMP to Lightroom.',
+      'The same embedded-preview trick that makes Photo Mechanic instant, in your browser: no install, no licence, XMP export to Lightroom.',
     h1: 'A free Photo Mechanic alternative that lives in your browser',
     intro: [
       'Photo Mechanic earned its reputation with one idea: never decode RAW sensor data while browsing; show the JPEG preview the camera already rendered. That idea is why it feels instant, and it is also why it costs real money as a desktop install.',
@@ -245,7 +268,7 @@ const TOPIC_PAGES: LandingPage[] = [
     slug: 'how-to-cull-photos-faster',
     title: 'How to Cull Photos Faster: a Working Method (and Free Tool)',
     metaDescription:
-      'A concrete method to cull a 3,000 photo shoot in under an hour: two passes, keyboard only, reject-first. Includes a free browser tool that reads RAW previews instantly.',
+      'How to cull a 3,000 photo shoot in under an hour: two passes, keyboard only, reject first. With a free browser tool that reads RAW instantly.',
     h1: 'How to cull photos faster',
     intro: [
       'Culling eats more studio time than editing for most event photographers, and it is almost always done inefficiently: one photo at a time, mouse in hand, deciding "keep or not" from scratch on every frame.',
@@ -290,7 +313,7 @@ const TOPIC_PAGES: LandingPage[] = [
   },
   {
     slug: 'raw-viewer-online',
-    title: 'RAW Viewer Online: Open Any Camera RAW File Free, No Upload',
+    title: 'RAW Viewer Online: Open Any Camera RAW File, Free',
     metaDescription:
       'View CR2, CR3, NEF, ARW, RAF, DNG, ORF and RW2 files online without uploading them. Free browser RAW viewer with EXIF, ratings and Lightroom XMP export.',
     h1: 'A RAW viewer that works where you are',

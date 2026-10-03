@@ -1,20 +1,61 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { SITE_URL } from '@/lib/site';
+import { contentPageGraph, jsonLdGraph } from '@/lib/jsonld';
+import { PUBLISHER_EMAIL, SITE_NAME, canonicalUrl, ogImageUrl } from '@/lib/site';
+
+const DESCRIPTION =
+  'Legal notice (mentions legales) for OnlineCull: publisher, hosting provider, contact, licensing and warranty information.';
 
 export const metadata: Metadata = {
   title: 'Legal notice',
-  description:
-    'Legal notice (mentions legales) for OnlineCull: publisher, hosting provider, contact, licensing and warranty information.',
-  alternates: { canonical: `${SITE_URL}/legal/` },
+  description: DESCRIPTION,
+  alternates: { canonical: canonicalUrl('/legal') },
+  // Declared so the `app/opengraph-image.tsx` file convention cannot override
+  // the layout's `images` with the robots-blocked `/opengraph-image` URL.
+  // `scripts/og-png.mjs` fails the build if it ever does.
+  openGraph: {
+    type: 'website',
+    url: canonicalUrl('/legal'),
+    siteName: SITE_NAME,
+    locale: 'en_US',
+    title: 'Legal notice · OnlineCull',
+    description: DESCRIPTION,
+    images: [
+      { url: ogImageUrl(), width: 1200, height: 630, alt: SITE_NAME, type: 'image/png' },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Legal notice · OnlineCull',
+    description: DESCRIPTION,
+    images: [ogImageUrl()],
+  },
   robots: { index: true, follow: true },
 };
 
-const CONTACT_EMAIL = 'damienyvert.dev@gmail.com';
+/**
+ * Read from `lib/site.ts` rather than written here: the same address feeds the
+ * `Organization` and `Person` nodes of the structured data, and the two must
+ * not be able to drift.
+ */
+const CONTACT_EMAIL = PUBLISHER_EMAIL;
 
 export default function LegalPage() {
   return (
     <main className="min-h-dvh bg-ink text-paper">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLdGraph(
+            contentPageGraph({
+              url: canonicalUrl('/legal'),
+              name: 'Legal notice',
+              description: DESCRIPTION,
+              crumb: 'Legal notice',
+            }),
+          ),
+        }}
+      />
       <div className="mx-auto max-w-2xl px-5 py-10">
         <nav className="mb-12">
           <Link href="/" className="flex items-center gap-2.5">

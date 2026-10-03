@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CullApp } from '@/components/CullApp';
 import { LANDING_PAGES, landingBySlug } from '@/lib/content';
-import { SITE_URL } from '@/lib/site';
+import { jsonLdGraph, landingGraph } from '@/lib/jsonld';
+import { SITE_NAME, SITE_TAGLINE, canonicalUrl, ogImageUrl } from '@/lib/site';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -17,11 +18,43 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const page = landingBySlug(slug);
   if (!page) return {};
+  const url = canonicalUrl(`/${page.slug}`);
+
   return {
     title: { absolute: page.title },
     description: page.metaDescription,
-    alternates: { canonical: `${SITE_URL}/${page.slug}/` },
-    openGraph: { title: page.title, description: page.metaDescription },
+    alternates: { canonical: url },
+    /**
+     * ⚠ `images` IS NOT OPTIONAL HERE. Declaring an `openGraph` object in
+     * `generateMetadata` REPLACES the layout's, and the file-based
+     * `app/opengraph-image.tsx` is not resolved for this segment either — so
+     * these twelve pages shipped `twitter:card="summary_large_image"` with no
+     * image at all, and every share of them rendered as a bare link. Verified
+     * in the built HTML before the fix: zero `og:image` on all twelve.
+     */
+    openGraph: {
+      type: 'website',
+      url,
+      siteName: SITE_NAME,
+      locale: 'en_US',
+      title: page.title,
+      description: page.metaDescription,
+      images: [
+        {
+          url: ogImageUrl(),
+          width: 1200,
+          height: 630,
+          alt: `${SITE_NAME}: ${SITE_TAGLINE}`,
+          type: 'image/png',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: page.title,
+      description: page.metaDescription,
+      images: [ogImageUrl()],
+    },
   };
 }
 
@@ -30,23 +63,13 @@ export default async function SeoPage({ params }: Props) {
   const page = landingBySlug(slug);
   if (!page) notFound();
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: page.faq.map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
-  };
-
   const others = LANDING_PAGES.filter((p) => p.slug !== page.slug);
 
   return (
     <main className="min-h-dvh bg-ink text-paper">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdGraph(landingGraph(page)) }}
       />
       <div className="mx-auto max-w-3xl px-5 py-8">
         <nav className="mb-12 flex items-center justify-between">

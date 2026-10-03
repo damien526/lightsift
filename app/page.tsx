@@ -1,42 +1,55 @@
+import type { Metadata } from 'next';
 import { CullApp } from '@/components/CullApp';
 import { HOME_FAQ } from '@/lib/faq';
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site';
+import { homeGraph, jsonLdGraph } from '@/lib/jsonld';
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TAGLINE,
+  canonicalUrl,
+  ogImageUrl,
+} from '@/lib/site';
+
+/**
+ * The home page declares its own `openGraph` block for one reason: without
+ * one, the `app/opengraph-image.tsx` file convention overrides the `images`
+ * inherited from the layout, and this page shipped the extensionless,
+ * robots-blocked `/opengraph-image` URL. `scripts/og-png.mjs` fails the build
+ * if that ever comes back.
+ */
+export const metadata: Metadata = {
+  alternates: { canonical: canonicalUrl('/') },
+  openGraph: {
+    type: 'website',
+    url: canonicalUrl('/'),
+    siteName: SITE_NAME,
+    locale: 'en_US',
+    title: `${SITE_NAME}: ${SITE_TAGLINE}`,
+    description: SITE_DESCRIPTION,
+    images: [
+      {
+        url: ogImageUrl(),
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME}: ${SITE_TAGLINE}`,
+        type: 'image/png',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${SITE_NAME}: ${SITE_TAGLINE}`,
+    description: SITE_DESCRIPTION,
+    images: [ogImageUrl()],
+  },
+};
 
 export default function Home() {
-  const jsonLd = [
-    {
-      '@context': 'https://schema.org',
-      '@type': 'SoftwareApplication',
-      name: SITE_NAME,
-      url: SITE_URL,
-      applicationCategory: 'MultimediaApplication',
-      operatingSystem: 'Web browser',
-      description: SITE_DESCRIPTION,
-      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-      featureList: [
-        'Open folders of RAW photos locally, no upload',
-        'CR2, CR3, NEF, ARW, RAF, DNG, ORF, RW2, PEF, JPEG support',
-        'Keyboard-first rating, picks and rejects',
-        '1:1 loupe with EXIF and histogram',
-        'XMP sidecar export for Lightroom, Bridge and Capture One',
-      ],
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: HOME_FAQ.map(([q, a]) => ({
-        '@type': 'Question',
-        name: q,
-        acceptedAnswer: { '@type': 'Answer', text: a },
-      })),
-    },
-  ];
-
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdGraph(homeGraph(HOME_FAQ)) }}
       />
       <CullApp />
     </>

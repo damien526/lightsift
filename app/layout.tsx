@@ -1,7 +1,13 @@
 import type { Metadata, Viewport } from 'next';
 import { Fraunces, Instrument_Sans, Spline_Sans_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
-import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL } from '@/lib/site';
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TAGLINE,
+  SITE_URL,
+  ogImageUrl,
+} from '@/lib/site';
 import './globals.css';
 
 const fraunces = Fraunces({
@@ -35,9 +41,39 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     type: 'website',
     locale: 'en_US',
+    images: [
+      {
+        url: ogImageUrl(),
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME}: ${SITE_TAGLINE}`,
+        type: 'image/png',
+      },
+    ],
   },
-  twitter: { card: 'summary_large_image' },
-  robots: { index: true, follow: true },
+  twitter: { card: 'summary_large_image', images: [ogImageUrl()] },
+  /**
+   * By default Google truncates the snippet it shows and allows only a small
+   * thumbnail. The last two directives lift both limits: the snippet can carry
+   * a whole answer, and the social card can show large.
+   *
+   * `noindex` still sits where it belongs — the 404 declares it for itself and
+   * overrides these values (see `app/not-found.tsx`).
+   */
+  robots: {
+    index: true,
+    follow: true,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
+  },
+  /**
+   * Search Console verification. The token arrives through the environment
+   * rather than the repo: it isn't code, and Google can rotate it without a
+   * commit. Absent, Next writes nothing — no empty tag ships to production.
+   */
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
 };
 
 export const viewport: Viewport = {
