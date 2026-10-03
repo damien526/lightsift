@@ -30,11 +30,11 @@ const STEPS: [string, string, string][] = [
   [
     '01',
     'Open a folder',
-    'Point Lightsift at a card or a shoot folder. Previews appear in seconds because nothing is uploaded anywhere: your files are read in place, on your machine.',
+    'Point OnlineCull at a card or a shoot folder. Previews appear in seconds because nothing is uploaded anywhere: your files are read in place, on your machine.',
   ],
   [
     '02',
-    'Sift with the keyboard',
+    'Cull with the keyboard',
     'Arrows to move, 1 to 5 to rate, P to pick, X to reject, Z to check focus at 1:1. The same muscle memory as Photo Mechanic or Lightroom, with zero setup.',
   ],
   [
@@ -105,7 +105,7 @@ export function Landing({
           <nav className="mb-14 flex items-center justify-between">
             <span className="flex items-center gap-2.5">
               <span className="inline-block h-3 w-3 rounded-full bg-amber" />
-              <span className="font-display text-xl">Lightsift</span>
+              <span className="font-display text-xl">OnlineCull</span>
             </span>
             <div className="flex items-center gap-5 text-sm text-dim">
               <a href="#how" className="hidden transition-colors hover:text-paper sm:inline">
@@ -130,7 +130,7 @@ export function Landing({
               <em className="text-amber">before your coffee cools.</em>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-dim">
-              Lightsift opens thousands of RAW files straight from your drive, in your browser.
+              OnlineCull opens thousands of RAW files straight from your drive, in your browser.
               Rate with your keyboard, zoom to check focus, and export picks that Lightroom
               understands. Your photos never leave your machine.
             </p>
@@ -255,7 +255,7 @@ export function Landing({
               they show you that embedded preview.
             </p>
             <p className="leading-relaxed">
-              Lightsift does exactly this, in the browser: it parses the RAW container, pulls the
+              OnlineCull does exactly this, in the browser: it parses the RAW container, pulls the
               preview out and paints it, in a few milliseconds per file, on a pool of background
               threads. A 48 GB wedding needs zero upload and zero import, because the photos are
               read from your own disk.
@@ -289,13 +289,13 @@ export function Landing({
 
       {/* Comparison */}
       <section className="mx-auto max-w-5xl px-5 py-16">
-        <h2 className="font-display text-3xl sm:text-4xl">Where Lightsift sits</h2>
+        <h2 className="font-display text-3xl sm:text-4xl">Where OnlineCull sits</h2>
         <div className="mt-8 overflow-x-auto">
           <table className="w-full min-w-[560px] border-collapse text-sm">
             <thead>
               <tr className="border-b border-line text-left text-xs uppercase tracking-wider text-faint">
                 <th className="py-3 pr-4 font-medium"></th>
-                <th className="py-3 pr-4 font-medium text-amber">Lightsift</th>
+                <th className="py-3 pr-4 font-medium text-amber">OnlineCull</th>
                 <th className="py-3 pr-4 font-medium">Desktop culling apps</th>
                 <th className="py-3 font-medium">Cloud culling</th>
               </tr>
@@ -322,7 +322,7 @@ export function Landing({
           </table>
         </div>
         <p className="mt-4 text-xs text-faint">
-          AI culling assistants are great at volume; Lightsift is for photographers who want their
+          AI culling assistants are great at volume; OnlineCull is for photographers who want their
           own eyes on every frame, fast. Both can coexist in one workflow.
         </p>
       </section>
@@ -364,7 +364,7 @@ export function Landing({
           <div className="max-w-xs">
             <span className="flex items-center gap-2">
               <span className="inline-block h-2.5 w-2.5 rounded-full bg-amber" />
-              <span className="font-display text-base text-paper">Lightsift</span>
+              <span className="font-display text-base text-paper">OnlineCull</span>
             </span>
             <p className="mt-2 leading-relaxed">
               Free in-browser photo culling and RAW viewer. Files stay on your device.

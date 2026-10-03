@@ -1,12 +1,12 @@
-# Lightsift
+# OnlineCull
 
 Free photo culling and RAW viewing in the browser. Open a folder of CR2, CR3, NEF, ARW, RAF, DNG, ORF, RW2 or PEF files, rate and flag with the keyboard, export XMP sidecars that Lightroom, Bridge and Capture One read. No upload, no install, no account, no photo cap.
 
-**https://lightsift.vercel.app**
+**https://onlinecull.com**
 
 ## How it works
 
-Every RAW file embeds a full-size JPEG preview rendered by the camera. Lightsift parses the RAW container locally (TIFF/EP walking for CR2, NEF, ARW, DNG, ORF, RW2 and PEF; ISO-BMFF box walking for CR3; header offsets for RAF; a marker-aware scan as fallback) and extracts that preview on a pool of Web Workers. Nothing is ever uploaded: there is no server-side processing at all.
+Every RAW file embeds a full-size JPEG preview rendered by the camera. OnlineCull parses the RAW container locally (TIFF/EP walking for CR2, NEF, ARW, DNG, ORF, RW2 and PEF; ISO-BMFF box walking for CR3; header offsets for RAF; a marker-aware scan as fallback) and extracts that preview on a pool of Web Workers. Nothing is ever uploaded: there is no server-side processing at all.
 
 - Virtualized grid that stays at 60 fps with thousands of photos
 - Loupe with 1:1 zoom, EXIF, histogram and blown-highlight warning

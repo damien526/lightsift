@@ -91,7 +91,7 @@ export function ExportPanel({
         setWorkingOn(null);
         return;
       }
-      const target = await dirHandle.getDirectoryHandle('lightsift-selects', { create: true });
+      const target = await dirHandle.getDirectoryHandle('onlinecull-selects', { create: true });
       let n = 0;
       for (const item of picks) {
         const out = await target.getFileHandle(item.name, { create: true });
@@ -105,7 +105,7 @@ export function ExportPanel({
         n++;
         setStatus(`Copying picks… ${n} / ${picks.length}`);
       }
-      setStatus(`Copied ${n} picks into "${folderName}/lightsift-selects". Originals untouched.`);
+      setStatus(`Copied ${n} picks into "${folderName}/onlinecull-selects". Originals untouched.`);
     } catch (err) {
       setStatus(`Could not copy: ${err instanceof Error ? err.message : String(err)}`);
     }
@@ -183,7 +183,7 @@ export function ExportPanel({
                   Copy the {picks.length} picks into a selects folder
                 </span>
                 <span className="block text-xs text-dim">
-                  Duplicates the keepers into "lightsift-selects" inside your folder.
+                  Duplicates the keepers into "onlinecull-selects" inside your folder.
                 </span>
               </button>
             </>
@@ -223,7 +223,7 @@ export function ExportPanel({
 
         {!dirHandle && (
           <p className="mt-4 text-xs text-faint">
-            Tip: in Chrome or Edge, open the folder with the "Open a folder" button and Lightsift can
+            Tip: in Chrome or Edge, open the folder with the "Open a folder" button and OnlineCull can
             also write sidecars directly next to your files and copy picks into a selects folder.
           </p>
         )}

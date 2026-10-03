@@ -1,8 +1,9 @@
 import { createServer } from 'node:http';
 import { readFileSync, existsSync, statSync } from 'node:fs';
-import { join, extname } from 'node:path';
+import { join, extname, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer-core';
-const root = '/Users/damyvt/development/lightsift';
+const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const out = join(root, 'out');
 const MIME = {'.html':'text/html','.js':'text/javascript','.css':'text/css','.jpg':'image/jpeg','.svg':'image/svg+xml','.webp':'image/webp','.ico':'image/x-icon','.txt':'text/plain','.xml':'application/xml'};
 const server = createServer((req,res)=>{let p=decodeURIComponent(new URL(req.url,'http://x').pathname);let f=join(out,p);if(existsSync(f)&&statSync(f).isDirectory())f=join(f,'index.html');if(!existsSync(f))f=join(out,p.replace(/\/$/,'')+'.html');if(!existsSync(f)){res.writeHead(404);res.end();return}res.writeHead(200,{'Content-Type':MIME[extname(f)]??'application/octet-stream'});res.end(readFileSync(f))});

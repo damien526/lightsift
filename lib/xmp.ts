@@ -13,7 +13,7 @@ export function xmpSidecar(mark: Mark): string {
     attrs.push(`xmp:Label="Red"`);
     if (mark.rating === 0) attrs.push(`xmp:Rating="-1"`);
   }
-  return `<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Lightsift">
+  return `<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="OnlineCull">
  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about=""
     xmlns:xmp="http://ns.adobe.com/xap/1.0/"

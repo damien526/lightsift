@@ -8,7 +8,7 @@ export interface Mark {
   flag: 'pick' | 'reject' | null;
 }
 
-const DB_NAME = 'lightsift';
+const DB_NAME = 'onlinecull';
 const STORE = 'marks';
 
 function openDb(): Promise<IDBDatabase> {

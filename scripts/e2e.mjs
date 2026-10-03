@@ -156,7 +156,7 @@ try {
   const robots = await (await fetch('http://localhost:4871/robots.txt')).text();
   check('robots has sitemap', robots.includes('sitemap.xml'));
   const llms = await (await fetch('http://localhost:4871/llms.txt')).text();
-  check('llms.txt served', llms.includes('Lightsift'));
+  check('llms.txt served', llms.includes('OnlineCull'));
 } catch (err) {
   console.error('E2E crashed:', err);
   failed++;

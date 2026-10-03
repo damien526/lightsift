@@ -11,7 +11,10 @@ page.on('console', (m) => {
 });
 page.on('pageerror', (e) => violations.push('pageerror: ' + e.message));
 await page.setViewport({ width: 1440, height: 900 });
-await page.goto('https://lightsift.vercel.app/', { waitUntil: 'networkidle0' });
+// Override while the custom domain's DNS is still propagating:
+//   PROD_URL=https://onlinecull.vercel.app/ node scripts/prod-check.mjs
+const TARGET = process.env.PROD_URL || 'https://onlinecull.com/';
+await page.goto(TARGET, { waitUntil: 'networkidle0' });
 await page.click('[data-testid="open-demo"]');
 await page.waitForSelector('[data-testid="grid"]', { timeout: 30000 });
 await page.waitForFunction(

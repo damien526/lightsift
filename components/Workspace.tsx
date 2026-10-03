@@ -192,7 +192,7 @@ export function Workspace({
             className="flex items-center gap-2"
           >
             <span className="inline-block h-2.5 w-2.5 rounded-full bg-amber" />
-            <span className="font-display text-lg leading-none text-paper">Lightsift</span>
+            <span className="font-display text-lg leading-none text-paper">OnlineCull</span>
           </button>
           <span className="hidden font-mono text-xs text-faint sm:inline" data-testid="session-meta">
             {folderName} · {items.length} photos

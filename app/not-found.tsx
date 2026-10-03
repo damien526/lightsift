@@ -10,7 +10,7 @@ export default function NotFound() {
         href="/"
         className="mt-8 rounded-full bg-amber px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-amber-bright"
       >
-        Back to Lightsift
+        Back to OnlineCull
       </Link>
     </main>
   );

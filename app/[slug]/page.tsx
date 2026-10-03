@@ -52,7 +52,7 @@ export default async function SeoPage({ params }: Props) {
         <nav className="mb-12 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5">
             <span className="inline-block h-3 w-3 rounded-full bg-amber" />
-            <span className="font-display text-xl">Lightsift</span>
+            <span className="font-display text-xl">OnlineCull</span>
           </Link>
           <Link href="/" className="text-sm text-dim transition-colors hover:text-paper">
             Open the app
@@ -98,7 +98,7 @@ export default async function SeoPage({ params }: Props) {
         </article>
 
         <footer className="mt-16 border-t border-line pt-8">
-          <h2 className="mb-3 text-sm font-semibold text-dim">More from Lightsift</h2>
+          <h2 className="mb-3 text-sm font-semibold text-dim">More from OnlineCull</h2>
           <nav className="grid grid-cols-2 gap-x-6 gap-y-1.5 text-sm sm:grid-cols-3">
             {others.map((p) => (
               <Link
@@ -111,7 +111,7 @@ export default async function SeoPage({ params }: Props) {
             ))}
           </nav>
           <p className="mt-8 text-xs text-faint">
-            Lightsift is free and runs entirely in your browser; photos never leave your device.{' '}
+            OnlineCull is free and runs entirely in your browser; photos never leave your device.{' '}
             <Link href="/privacy/" className="underline decoration-line underline-offset-2">
               Privacy
             </Link>

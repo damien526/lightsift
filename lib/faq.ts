@@ -2,11 +2,11 @@
 export const HOME_FAQ: [string, string][] = [
   [
     'Are my photos uploaded somewhere?',
-    'No. Lightsift runs entirely in your browser. Files are read locally with the File System Access API and never leave your computer. You can load a 50 GB shoot on hotel wifi: there is no upload, so there is nothing to wait for.',
+    'No. OnlineCull runs entirely in your browser. Files are read locally with the File System Access API and never leave your computer. You can load a 50 GB shoot on hotel wifi: there is no upload, so there is nothing to wait for.',
   ],
   [
     'How can a browser open RAW files that fast?',
-    'Every RAW file carries a full-size JPEG preview that the camera rendered at capture time. Lightsift parses the CR2, CR3, NEF, ARW, RAF, DNG, ORF, RW2 or PEF container and pulls that preview out directly, the same trick that makes Photo Mechanic famously fast. No demosaicing, no waiting.',
+    'Every RAW file carries a full-size JPEG preview that the camera rendered at capture time. OnlineCull parses the CR2, CR3, NEF, ARW, RAF, DNG, ORF, RW2 or PEF container and pulls that preview out directly, the same trick that makes Photo Mechanic famously fast. No demosaicing, no waiting.',
   ],
   [
     'Does it really cost nothing?',
@@ -14,7 +14,7 @@ export const HOME_FAQ: [string, string][] = [
   ],
   [
     'How do my ratings get into Lightroom?',
-    'Lightsift writes standard XMP sidecar files next to your RAWs (or hands them to you as a ZIP). On import, Lightroom Classic, Bridge and Capture One read the star ratings; picks arrive with a green color label and rejects with a red one.',
+    'OnlineCull writes standard XMP sidecar files next to your RAWs (or hands them to you as a ZIP). On import, Lightroom Classic, Bridge and Capture One read the star ratings; picks arrive with a green color label and rejects with a red one.',
   ],
   [
     'What happens to RAW+JPEG pairs?',

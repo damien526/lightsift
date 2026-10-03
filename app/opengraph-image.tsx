@@ -32,7 +32,7 @@ export default function OgImage() {
               background: '#f2a33c',
             }}
           />
-          <div style={{ display: 'flex', fontSize: 40, color: '#ece7dd' }}>Lightsift</div>
+          <div style={{ display: 'flex', fontSize: 40, color: '#ece7dd' }}>OnlineCull</div>
         </div>
         <div
           style={{

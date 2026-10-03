@@ -5,7 +5,7 @@ import { SITE_URL } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Legal notice',
   description:
-    'Legal notice (mentions legales) for Lightsift: publisher, hosting provider, contact, licensing and warranty information.',
+    'Legal notice (mentions legales) for OnlineCull: publisher, hosting provider, contact, licensing and warranty information.',
   alternates: { canonical: `${SITE_URL}/legal/` },
   robots: { index: true, follow: true },
 };
@@ -19,7 +19,7 @@ export default function LegalPage() {
         <nav className="mb-12">
           <Link href="/" className="flex items-center gap-2.5">
             <span className="inline-block h-3 w-3 rounded-full bg-amber" />
-            <span className="font-display text-xl">Lightsift</span>
+            <span className="font-display text-xl">OnlineCull</span>
           </Link>
         </nav>
         <h1 className="font-display text-4xl">Legal notice</h1>
@@ -60,15 +60,15 @@ export default function LegalPage() {
           <section>
             <h2 className="mb-1.5 font-semibold text-paper">Intellectual property</h2>
             <p>
-              The Lightsift source code is released under the MIT license and available on{' '}
+              The OnlineCull source code is released under the MIT license and available on{' '}
               <a
-                href="https://github.com/damien526/lightsift"
+                href="https://github.com/damien526/onlinecull"
                 className="underline decoration-line underline-offset-2 hover:text-paper"
               >
                 GitHub
               </a>
               . The sample photographs in the demo shoot are CC0 (public domain) test shots from the
-              raw.pixls.us archive. Photos you open with the tool remain yours; Lightsift claims no
+              raw.pixls.us archive. Photos you open with the tool remain yours; OnlineCull claims no
               right over them and never receives them.
             </p>
           </section>
@@ -76,7 +76,7 @@ export default function LegalPage() {
           <section>
             <h2 className="mb-1.5 font-semibold text-paper">Warranty</h2>
             <p>
-              Lightsift is provided free of charge, as is, without warranty of any kind. It never
+              OnlineCull is provided free of charge, as is, without warranty of any kind. It never
               modifies or deletes your original image files, and exports only write new files
               (XMP sidecars, copies of your picks) where you explicitly ask for them. Always keep
               backups of client work regardless of the tools you use.

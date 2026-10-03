@@ -77,7 +77,7 @@ export function CullApp({ embedded = false }: { embedded?: boolean }) {
     ) => {
       const built = buildItems(files);
       if (built.length === 0) {
-        setOpenError('No photos found in that folder. Lightsift reads RAW files (CR2, CR3, NEF, ARW, RAF, DNG, ORF, RW2, PEF) and JPEG, PNG or WebP.');
+        setOpenError('No photos found in that folder. OnlineCull reads RAW files (CR2, CR3, NEF, ARW, RAF, DNG, ORF, RW2, PEF) and JPEG, PNG or WebP.');
         setBusy(false);
         return;
       }

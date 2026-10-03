@@ -104,7 +104,7 @@ export function Grid({
     <div
       ref={scrollRef}
       onScroll={onScroll}
-      className="sift-scroll relative flex-1 overflow-y-auto bg-ink"
+      className="cull-scroll relative flex-1 overflow-y-auto bg-ink"
       data-testid="grid"
     >
       <div style={{ height: totalH, position: 'relative' }}>{visible}</div>

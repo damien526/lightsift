@@ -33,19 +33,19 @@ html {
 }
 
 /* Thin warm scrollbars in the workspace. */
-.sift-scroll {
+.cull-scroll {
   scrollbar-width: thin;
   scrollbar-color: var(--color-line) transparent;
 }
-.sift-scroll::-webkit-scrollbar {
+.cull-scroll::-webkit-scrollbar {
   width: 10px;
 }
-.sift-scroll::-webkit-scrollbar-thumb {
+.cull-scroll::-webkit-scrollbar-thumb {
   background: var(--color-line);
   border-radius: 5px;
 }
 
-@keyframes sift-fade-up {
+@keyframes cull-fade-up {
   from {
     opacity: 0;
     transform: translateY(10px);
@@ -56,10 +56,10 @@ html {
   }
 }
 .fade-up {
-  animation: sift-fade-up 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: cull-fade-up 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
-@keyframes sift-thumb-in {
+@keyframes cull-thumb-in {
   from {
     opacity: 0;
     transform: scale(0.97);
@@ -70,11 +70,11 @@ html {
   }
 }
 .thumb-in {
-  animation: sift-thumb-in 0.35s ease-out both;
+  animation: cull-thumb-in 0.35s ease-out both;
 }
 
 /* The landing's contact-sheet strip scrolls forever. */
-@keyframes sift-strip {
+@keyframes cull-strip {
   from {
     transform: translateX(0);
   }
@@ -83,7 +83,7 @@ html {
   }
 }
 .strip-scroll {
-  animation: sift-strip 48s linear infinite;
+  animation: cull-strip 48s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
