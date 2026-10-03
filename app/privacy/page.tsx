@@ -7,7 +7,7 @@ const DESCRIPTION =
   'OnlineCull processes your photos entirely in your browser. Nothing is uploaded. Here is exactly what the site does and does not collect.';
 
 export const metadata: Metadata = {
-  title: 'Privacy',
+  title: 'Privacy policy',
   description: DESCRIPTION,
   alternates: { canonical: canonicalUrl('/privacy') },
   // Declared so the `app/opengraph-image.tsx` file convention cannot override
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     url: canonicalUrl('/privacy'),
     siteName: SITE_NAME,
     locale: 'en_US',
-    title: 'Privacy · OnlineCull',
+    title: 'Privacy policy · OnlineCull',
     description: DESCRIPTION,
     images: [
       { url: ogImageUrl(), width: 1200, height: 630, alt: SITE_NAME, type: 'image/png' },
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Privacy · OnlineCull',
+    title: 'Privacy policy · OnlineCull',
     description: DESCRIPTION,
     images: [ogImageUrl()],
   },
@@ -41,7 +41,7 @@ export default function PrivacyPage() {
           __html: jsonLdGraph(
             contentPageGraph({
               url: canonicalUrl('/privacy'),
-              name: 'Privacy',
+              name: 'Privacy policy',
               description: DESCRIPTION,
               crumb: 'Privacy',
             }),
@@ -55,51 +55,73 @@ export default function PrivacyPage() {
             <span className="font-display text-xl">OnlineCull</span>
           </Link>
         </nav>
-        <h1 className="font-display text-4xl">Privacy</h1>
+        <h1 className="font-display text-4xl">Privacy policy</h1>
         <p className="mt-2 text-sm text-faint">Last updated: October 3, 2026.</p>
-        <div className="mt-6 space-y-5 leading-relaxed text-dim">
-          <p>
-            <strong className="text-paper">Your photos never leave your device.</strong> OnlineCull
-            opens, parses and previews your files entirely inside your browser. There is no upload
-            endpoint; the site could not receive your photos even if it wanted to. You can verify
-            this in your browser&apos;s network inspector: no image data is ever transmitted.
-          </p>
-          <p>
-            <strong className="text-paper">Ratings stay on your device too.</strong> Stars and flags
-            are stored in your browser&apos;s local database (IndexedDB) so a reopened folder
-            remembers your work. Clearing site data removes them.
-          </p>
-          <p>
-            <strong className="text-paper">What is collected:</strong> anonymous page analytics
-            (Vercel Analytics: page views, country, device type). No cookies for tracking, no ads,
-            no fingerprinting, no account system.
-          </p>
-          <p>
-            <strong className="text-paper">File system access:</strong> when you open a folder,
-            the browser grants OnlineCull read access to it for the session, and asks you separately
-            if you choose an export that writes XMP sidecars or copies picks. OnlineCull never
-            modifies or deletes your original image files.
-          </p>
-          <p>
-            <strong className="text-paper">Cookies and consent (GDPR / ePrivacy):</strong> the site
-            sets no advertising or tracking cookies and uses no fingerprinting, which is why there
-            is no cookie banner. The only data stored on your device (your ratings and flags, in
-            IndexedDB) exists purely to provide the feature you asked for and never leaves your
-            browser. Vercel Analytics is cookieless and aggregates page views without building
-            individual profiles.
-          </p>
-          <p>
-            <strong className="text-paper">Data controller and contact:</strong> Damien Yvert. For
-            any privacy question or request, write to{' '}
-            <a
-              href="mailto:damienyvert.dev@gmail.com"
-              className="underline decoration-line underline-offset-2 hover:text-paper"
-            >
-              damienyvert.dev@gmail.com
-            </a>
-            . Since no personal data reaches the publisher, most GDPR requests resolve to actions on
-            your own device (clearing site data removes everything).
-          </p>
+        {/* The six leads below used to be `<strong>` inside their paragraph,
+            which left the page with no heading structure at all: one `<h1>`
+            and six hundred words of flat prose. They are real `<h2>`s now —
+            a screen reader can jump between them, and so can a reader looking
+            for the one answer they came for. */}
+        <div className="mt-6 space-y-6 leading-relaxed text-dim">
+          <section>
+            <h2 className="font-display text-lg text-paper">
+              Your photos never leave your device
+            </h2>
+            <p className="mt-1.5">
+              OnlineCull opens, parses and previews your files entirely inside your browser. There
+              is no upload endpoint; the site could not receive your photos even if it wanted to.
+              You can verify this in your browser&apos;s network inspector: no image data is ever
+              transmitted.
+            </p>
+          </section>
+          <section>
+            <h2 className="font-display text-lg text-paper">Ratings stay on your device too</h2>
+            <p className="mt-1.5">
+              Stars and flags are stored in your browser&apos;s local database (IndexedDB) so a
+              reopened folder remembers your work. Clearing site data removes them.
+            </p>
+          </section>
+          <section>
+            <h2 className="font-display text-lg text-paper">What is collected</h2>
+            <p className="mt-1.5">
+              Anonymous page analytics (Vercel Analytics: page views, country, device type). No
+              cookies for tracking, no ads, no fingerprinting, no account system.
+            </p>
+          </section>
+          <section>
+            <h2 className="font-display text-lg text-paper">File system access</h2>
+            <p className="mt-1.5">
+              When you open a folder, the browser grants OnlineCull read access to it for the
+              session, and asks you separately if you choose an export that writes XMP sidecars or
+              copies picks. OnlineCull never modifies or deletes your original image files.
+            </p>
+          </section>
+          <section>
+            <h2 className="font-display text-lg text-paper">
+              Cookies and consent (GDPR / ePrivacy)
+            </h2>
+            <p className="mt-1.5">
+              The site sets no advertising or tracking cookies and uses no fingerprinting, which is
+              why there is no cookie banner. The only data stored on your device (your ratings and
+              flags, in IndexedDB) exists purely to provide the feature you asked for and never
+              leaves your browser. Vercel Analytics is cookieless and aggregates page views without
+              building individual profiles.
+            </p>
+          </section>
+          <section>
+            <h2 className="font-display text-lg text-paper">Data controller and contact</h2>
+            <p className="mt-1.5">
+              Damien Yvert. For any privacy question or request, write to{' '}
+              <a
+                href="mailto:damienyvert.dev@gmail.com"
+                className="underline decoration-line underline-offset-2 hover:text-paper"
+              >
+                damienyvert.dev@gmail.com
+              </a>
+              . Since no personal data reaches the publisher, most GDPR requests resolve to actions
+              on your own device (clearing site data removes everything).
+            </p>
+          </section>
           <p className="text-sm text-faint">
             See also the{' '}
             <Link href="/legal/" className="underline decoration-line underline-offset-2 hover:text-paper">

@@ -109,6 +109,19 @@ export default async function SeoPage({ params }: Props) {
             ))}
           </ol>
 
+          {page.deepDive ? (
+            <section className="mt-12">
+              <h2 className="font-display text-2xl sm:text-3xl">{page.deepDive.title}</h2>
+              <div className="mt-5 space-y-4">
+                {page.deepDive.body.map((p, i) => (
+                  <p key={i} className="leading-relaxed text-dim">
+                    {p}
+                  </p>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
           <h2 className="mt-12 font-display text-2xl sm:text-3xl">FAQ</h2>
           <dl className="mt-5 space-y-6">
             {page.faq.map((f) => (

@@ -30,7 +30,10 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     images: [ogImageUrl()],
   },
-  robots: { index: true, follow: true },
+  // No `robots` override here. Declaring one replaces the layout's object
+  // wholesale rather than merging with it, and this page used to be the only
+  // indexable page on the site shipping without `max-image-preview:large` and
+  // `max-snippet:-1` — for no reason anyone could name.
 };
 
 /**

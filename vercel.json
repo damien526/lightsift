@@ -3,6 +3,8 @@
   "framework": null,
   "buildCommand": "npm run build",
   "outputDirectory": "out",
+  "cleanUrls": true,
+  "trailingSlash": true,
   "headers": [
     {
       "source": "/(favicon.ico|icon.svg)",

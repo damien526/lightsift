@@ -10,11 +10,14 @@ import {
 } from '@/lib/site';
 import './globals.css';
 
+// No `axes` here, deliberately. Asking for `opsz`, `SOFT` and `WONK` takes the
+// latin slice of Fraunces from 35 KB to 118 KB, and nothing in the stylesheet
+// reads them back — there is no `font-variation-settings` anywhere in the
+// project. That was 83 KB per page for three axes the site never used.
 const fraunces = Fraunces({
   subsets: ['latin'],
   variable: '--font-fraunces',
   display: 'swap',
-  axes: ['opsz', 'SOFT', 'WONK'],
 });
 
 const instrument = Instrument_Sans({
