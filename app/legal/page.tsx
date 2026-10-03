@@ -64,7 +64,9 @@ export default function LegalPage() {
           </Link>
         </nav>
         <h1 className="font-display text-4xl">Legal notice</h1>
-        <p className="mt-2 text-sm text-faint">Mentions legales, as required by the French LCEN.</p>
+        <p className="mt-2 text-sm text-faint">
+          Mentions legales, as required by the French LCEN. Last updated: October 3, 2026.
+        </p>
 
         <div className="mt-8 space-y-7 leading-relaxed text-dim">
           <section>

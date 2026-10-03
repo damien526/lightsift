@@ -56,6 +56,7 @@ export default function PrivacyPage() {
           </Link>
         </nav>
         <h1 className="font-display text-4xl">Privacy</h1>
+        <p className="mt-2 text-sm text-faint">Last updated: October 3, 2026.</p>
         <div className="mt-6 space-y-5 leading-relaxed text-dim">
           <p>
             <strong className="text-paper">Your photos never leave your device.</strong> OnlineCull
