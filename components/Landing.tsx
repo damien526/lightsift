@@ -387,8 +387,8 @@ export function Landing({
           <p className="mx-auto max-w-5xl px-5 py-4 text-xs text-faint">
             From the maker of{' '}
             <a href="https://www.music-waveform.com" className="underline decoration-line underline-offset-2 hover:text-paper">Waveform</a>,{' '}
-            <a href="https://undercap.vercel.app" className="underline decoration-line underline-offset-2 hover:text-paper">Undercap</a> and{' '}
-            <a href="https://graphmint.vercel.app" className="underline decoration-line underline-offset-2 hover:text-paper">Graphmint</a>.
+            <a href="https://www.squeezevid.app" className="underline decoration-line underline-offset-2 hover:text-paper">SqueezeVid</a> and{' '}
+            <a href="https://www.graphmint.app" className="underline decoration-line underline-offset-2 hover:text-paper">Graphmint</a>.
             Sample frames are CC0 test shots from raw.pixls.us.
           </p>
         </div>

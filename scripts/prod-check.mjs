@@ -11,9 +11,9 @@ page.on('console', (m) => {
 });
 page.on('pageerror', (e) => violations.push('pageerror: ' + e.message));
 await page.setViewport({ width: 1440, height: 900 });
-// Override while the custom domain's DNS is still propagating:
-//   PROD_URL=https://onlinecull.vercel.app/ node scripts/prod-check.mjs
-const TARGET = process.env.PROD_URL || 'https://onlinecull.com/';
+// Override to check a preview deployment instead of production:
+//   PROD_URL=<preview-url> node scripts/prod-check.mjs
+const TARGET = process.env.PROD_URL || 'https://www.onlinecull.com/';
 await page.goto(TARGET, { waitUntil: 'networkidle0' });
 await page.click('[data-testid="open-demo"]');
 await page.waitForSelector('[data-testid="grid"]', { timeout: 30000 });

@@ -1,5 +1,5 @@
 /** Single source of truth for the site's identity. Update SITE_URL when a custom domain lands. */
-export const SITE_URL = 'https://onlinecull.com';
+export const SITE_URL = 'https://www.onlinecull.com';
 export const SITE_NAME = 'OnlineCull';
 export const SITE_TAGLINE = 'Cull thousands of photos in your browser';
 export const SITE_DESCRIPTION =
